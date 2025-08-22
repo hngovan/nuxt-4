@@ -1,11 +1,11 @@
 export const useSider = () => {
   const collapsed = useState('sider-collapsed', () => false)
 
-  function toggleCollapsed() {
+  const toggleCollapsed = () => {
     collapsed.value = !collapsed.value
   }
 
-  function setCollapsed(value: boolean) {
+  const setCollapsed = (value: boolean) => {
     collapsed.value = value
   }
 
