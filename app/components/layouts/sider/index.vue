@@ -9,11 +9,31 @@ const { collapsed } = useSider()
       collapsed ? 'w-0' : 'w-[10rem]',
     ]"
   >
-    <div :class="['flex h-(--ui-header-height) shrink-0 items-center gap-1.5 px-4', collapsed ? 'justify-center' : '']">
-      <img src="/favicon.ico" alt="Logo" class="h-5 w-5 rounded-[inherit] object-cover">
-      <span v-if="!collapsed" class="text-default truncate text-sm font-medium">Nuxt</span>
+    <div
+      :class="[
+        'flex h-(--ui-header-height) w-full shrink-0 items-center gap-1.5 px-4',
+        collapsed ? 'justify-center' : '',
+      ]"
+    >
+      <UButton
+        color="neutral"
+        variant="ghost"
+        :class="['w-full', collapsed ? 'p-1.5' : '']"
+      >
+        <img
+          src="/favicon.ico"
+          alt="Logo"
+          class="h-5 w-5 rounded-[inherit] object-cover"
+        >
+        <span
+          v-if="!collapsed"
+          class="text-default truncate text-sm font-medium"
+        >Nuxt</span>
+      </UButton>
     </div>
-    <div class="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-2 transition-all duration-300">
+    <div
+      class="flex flex-1 flex-col gap-4 overflow-y-auto px-4 py-2 transition-all duration-300"
+    >
       <LayoutsMenu />
     </div>
   </div>
