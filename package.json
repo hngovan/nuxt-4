@@ -41,10 +41,7 @@
     "vite-plugin-eslint2": "^5.0.4"
   },
   "lint-staged": {
-    "*.{ts,vue,css,scss}": [
-      "pnpm format",
-      "pnpm lint"
-    ]
+    "*.{ts,vue,css,scss}": "pnpm lint"
   },
   "packageManager": "pnpm@10.13.1"
 }
