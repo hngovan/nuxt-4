@@ -1,11 +1,14 @@
 <script setup lang="ts">
 const { collapsed, toggleCollapsed } = useSider()
+
+const { name } = useNameContext()
 </script>
 
 <template>
   <div
     class="border-default flex h-(--ui-header-height) shrink-0 items-center justify-between gap-1.5 border-b px-4 sm:px-6"
   >
+    {{ name }}
     <div class="flex min-w-0 items-center gap-1.5">
       <!-- menu mobile -->
       <UButton

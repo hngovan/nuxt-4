@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const text = ref('show name context')
+
+useNameContextProvider({ name: text })
+</script>
+
 <template>
   <div class="fixed inset-0 flex overflow-hidden">
     <LayoutsSider />
