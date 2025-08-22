@@ -28,7 +28,7 @@ export default withNuxt({
       'error',
       'PascalCase',
       {
-        registeredComponentsOnly: true,
+        registeredComponentsOnly: false,
         ignores: []
       }
     ]
