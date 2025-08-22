@@ -22,6 +22,15 @@ export default withNuxt({
     ],
     'vue/no-v-html': 'off',
     'vue/multi-word-component-names': 'off',
-    'vue/no-multiple-template-root': 'off'
+    'vue/no-multiple-template-root': 'off',
+    'vue/max-attributes-per-line': ['error', { singleline: 3 }],
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
+      {
+        registeredComponentsOnly: true,
+        ignores: []
+      }
+    ]
   }
 })

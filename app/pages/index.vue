@@ -1,33 +1,35 @@
 <script setup lang="ts">
-import type { AccordionItem } from '@nuxt/ui'
-
 useSeoMeta({
   title: 'Home',
   description: 'This is page Home'
 })
 
-const items = ref<AccordionItem[]>([
-  {
-    label: 'Icons',
-    icon: 'i-lucide-smile',
-    content: 'You have nothing to do, @nuxt/icon will handle it automatically.'
-  },
-  {
-    label: 'Colors',
-    icon: 'i-lucide-swatch-book',
-    content: 'Choose a primary and a neutral color from your Tailwind CSS theme.'
-  },
-  {
-    label: 'Components',
-    icon: 'i-lucide-box',
-    content: 'You can customize components by using the `class` / `ui` props or in your app.config.ts.'
-  }
-])
+const open = ref(false)
 </script>
 
 <template>
-  <div class="flex w-1/2 flex-col justify-center">
-    <div>{{ $t('common.hello') }}</div>
-    <UAccordion :items="items" />
+  <div class="flex flex-col justify-center gap-5">
+    <UButton icon="i-lucide-rocket" color="neutral" variant="link">
+      <NuxtLink to="/about">{{ $t('common.about') }}</NuxtLink>
+    </UButton>
+    <BaseButton />
+    <p>{{ formatNumber(1234) }}</p>
+    <UButton
+      label="Open Modal"
+      color="neutral"
+      variant="subtle"
+      @click="open = !open"
+    />
+    <Modal
+      v-model:open="open"
+      title="Custom Modal"
+      description="Hello from props"
+      :ui="{ footer: 'justify-end' }"
+      :header="false"
+      @ok="open = false"
+      @close="open = false"
+    >
+      Modal
+    </Modal>
   </div>
 </template>

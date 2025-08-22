@@ -17,6 +17,7 @@
     "@nuxt/image": "1.11.0",
     "@nuxt/scripts": "0.11.10",
     "@nuxt/ui": "3.3.0",
+    "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/i18n": "^10.0.5",
     "@tailwindcss/vite": "^4.1.11",
     "@unhead/vue": "^2.0.14",
@@ -28,7 +29,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@iconify-json/lucide": "^1.2.62",
     "@nuxt/eslint": "1.8.0",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
@@ -41,7 +41,10 @@
     "vite-plugin-eslint2": "^5.0.4"
   },
   "lint-staged": {
-    "*.{ts,vue}": "pnpm lint",
-    "*.{css,scss}": "pnpm format"
-  }
+    "*.{ts,vue,css,scss}": [
+      "pnpm format",
+      "pnpm lint"
+    ]
+  },
+  "packageManager": "pnpm@10.13.1"
 }

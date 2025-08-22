@@ -20,7 +20,6 @@ useHead({
 <template>
   <NuxtLayout>
     <UApp :locale="locales[locale as LocaleKeys]">
-      <NuxtRouteAnnouncer />
       <NuxtPage />
     </UApp>
   </NuxtLayout>

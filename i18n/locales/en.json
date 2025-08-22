@@ -1,5 +1,18 @@
 {
   "common": {
-    "hello": "Hello"
+    "about": "about"
+  },
+  "dashboard": {
+    "header": {
+      "title": "Home"
+    }
+  },
+  "error": {
+    "meta": {
+      "title": "Page not found",
+      "description": "We are sorry but this page could not be found.",
+      "message": "The page you are looking for does not exist.",
+      "back_to_home": "Back to home"
+    }
   }
 }
