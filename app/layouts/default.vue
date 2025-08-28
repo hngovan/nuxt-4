@@ -1,9 +1,3 @@
-<script setup lang="ts">
-const text = ref('show name context')
-
-useNameContextProvider({ name: text })
-</script>
-
 <template>
   <div class="fixed inset-0 flex overflow-hidden">
     <LayoutsSider />
@@ -12,7 +6,6 @@ useNameContextProvider({ name: text })
       <div class="flex flex-1 flex-col gap-4 overflow-y-auto p-4 sm:gap-6 sm:p-6">
         <slot />
       </div>
-      <LayoutsFooter />
     </div>
   </div>
 </template>

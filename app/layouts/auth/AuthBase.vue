@@ -1,6 +1,5 @@
 <template>
-  <div class="h-full min-h-screen p-3">
-    <div>this is layout auth</div>
+  <div class="flex h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
     <slot />
   </div>
 </template>

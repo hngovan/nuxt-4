@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'nuxt-v4',
+      title: 'D-Soft',
       htmlAttrs: {
         lang: 'en'
       }

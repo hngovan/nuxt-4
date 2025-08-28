@@ -7,12 +7,63 @@
       "title": "Home"
     }
   },
+  "menu": {
+    "home": "Home",
+    "articles": "Articles",
+    "logout": "Logout"
+  },
+  "validate": {
+    "login": {
+      "email": "Invalid email",
+      "password": "Must be at least 8 characters"
+    }
+  },
+  "footer": {
+    "company": "D-Soft ©2025",
+    "all_rights_reserved": "All rights reserved."
+  },
   "error": {
     "meta": {
       "title": "Page not found",
       "description": "We are sorry but this page could not be found.",
       "message": "The page you are looking for does not exist.",
       "back_to_home": "Back to home"
+    }
+  },
+  "modal": {
+    "logout": {
+      "title": "Logout",
+      "description": "Are you sure you want to log out?"
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "Home",
+      "description": "This is the home page"
+    },
+    "login": {
+      "title": "Login",
+      "description": "This is the login page"
+    },
+    "articles": {
+      "title": "Articles",
+      "description": "This is the articles page"
+    }
+  },
+  "toast": {
+    "login": {
+      "description": "Login successful"
+    }
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "sign_in": "Sign in",
+    "placeholder": {
+      "email": "Enter your email",
+      "password": "Enter your password"
     }
   }
 }

@@ -6,18 +6,18 @@ const props = withDefaults(defineProps<ModalBaseProps>(), {
   footer: true
 })
 
-const emit = defineEmits<ModalBaseEmits>()
+const emits = defineEmits<ModalBaseEmits>()
 
 const forwarded = computed<ModalProps>(() => props)
 
 const handleOk = (e: MouseEvent) => {
-  emit('ok', e)
-  emit('close', true)
+  emits('ok', e)
+  emits('close', true)
 }
 
 const handleCancel = (e: MouseEvent) => {
-  emit('cancel', e)
-  emit('close', false)
+  emits('cancel', e)
+  emits('close', false)
 }
 </script>
 
@@ -31,9 +31,9 @@ const handleCancel = (e: MouseEvent) => {
         label="Cancel"
         color="neutral"
         variant="outline"
-        @click="handleOk"
+        @click="handleCancel"
       />
-      <UButton label="Submit" color="neutral" @click="handleCancel" />
+      <UButton label="Submit" color="neutral" @click="handleOk" />
     </template>
   </UModal>
 </template>
