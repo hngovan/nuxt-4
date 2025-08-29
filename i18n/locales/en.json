@@ -1,6 +1,10 @@
 {
   "common": {
-    "about": "about"
+    "table": {
+      "filters": {
+        "clear": "Clear filter"
+      }
+    }
   },
   "dashboard": {
     "header": {
@@ -64,6 +68,30 @@
     "placeholder": {
       "email": "Enter your email",
       "password": "Enter your password"
+    }
+  },
+  "table": {
+    "articles": {
+      "headers": {
+        "id": "ID",
+        "title": "Title",
+        "status": "Status",
+        "author": "Author",
+        "date": "Date",
+        "locale": "Locale"
+      },
+      "filters": {
+        "clear": "Clear filter",
+        "status": {
+          "public": "Public",
+          "draft": "Draft"
+        },
+        "locale": {
+          "en": "English",
+          "ja": "Japanese",
+          "vn": "Vietnamese"
+        }
+      }
     }
   }
 }

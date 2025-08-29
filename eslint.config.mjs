@@ -8,7 +8,8 @@ export default withNuxt({
     '@stylistic/semi': ['error', 'never'],
     '@stylistic/quotes': ['error', 'single'],
     '@stylistic/comma-dangle': ['error', 'never'],
-    '@stylistic/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
+    '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    '@stylistic/quote-props': ['error', 'as-needed'],
     'vue/html-self-closing': [
       'error',
       {

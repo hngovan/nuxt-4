@@ -31,7 +31,7 @@ const { collapsed, toggleCollapsed } = useSider()
       </h1>
     </div>
     <div>
-      <ThemePicker />
+      <ColorModeButton />
     </div>
   </div>
 </template>
