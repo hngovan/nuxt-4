@@ -1,24 +1,27 @@
 export function useAppToast() {
   const toast = useToast()
 
-  const success = (description?: string) => {
+  const success = (title: string, description?: string) => {
     toast.add({
+      title,
       description,
       color: 'success',
       icon: 'i-heroicons-check-circle'
     })
   }
 
-  const error = (description?: string) => {
+  const error = (title: string, description?: string) => {
     toast.add({
+      title,
       description,
       color: 'error',
       icon: 'i-heroicons-x-circle'
     })
   }
 
-  const info = (description?: string) => {
+  const info = (title: string, description?: string) => {
     toast.add({
+      title,
       description,
       color: 'info',
       icon: 'i-heroicons-information-circle'

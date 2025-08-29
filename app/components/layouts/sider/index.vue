@@ -14,13 +14,13 @@ const open = ref(false)
   <div
     :class="[
       'border-default bg-elevated/25 relative hidden min-h-svh min-w-16 shrink-0 flex-col border-r lg:flex',
-      collapsed ? 'w-0' : 'w-[15rem]',
+      collapsed ? 'w-0' : 'w-[15rem]'
     ]"
   >
     <div
       :class="[
         'flex h-(--ui-header-height) w-full shrink-0 items-center gap-1.5 px-4',
-        collapsed ? 'justify-center' : '',
+        collapsed ? 'justify-center' : ''
       ]"
     >
       <UButton color="neutral" variant="ghost" :class="['w-full', collapsed ? 'p-1.5' : '']">
@@ -37,7 +37,7 @@ const open = ref(false)
         size="lg"
         color="neutral"
         variant="link"
-        :class="{ 'p-1.5 w-[31px] h-8': collapsed }"
+        :class="{ 'h-8 w-[31px] p-1.5': collapsed }"
         :label="!collapsed ? $t('menu.logout') : ''"
         @click="open = true"
       />

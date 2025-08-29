@@ -22,7 +22,7 @@ export default withNuxt({
         math: 'always'
       }
     ],
-    'vue/no-v-html': 'off',
+    'vue/comma-dangle': ['error', 'never'],
     'vue/multi-word-component-names': 'off',
     'vue/no-multiple-template-root': 'off',
     'vue/max-attributes-per-line': ['error', { singleline: 3 }],

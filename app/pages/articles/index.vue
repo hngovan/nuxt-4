@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { h, resolveComponent, type DefineComponent } from 'vue'
 import { getPaginationRowModel } from '@tanstack/vue-table'
-import type { TableColumn, BadgeProps, ButtonProps, DropdownMenuProps, InputProps } from '@nuxt/ui'
+import { useClipboard } from '@vueuse/core'
+import type { TableColumn, DropdownMenuItem, BadgeProps, ButtonProps, DropdownMenuProps, InputProps } from '@nuxt/ui'
 import type { Article } from '~/types/article'
 
 const { t } = useI18n()
@@ -10,6 +11,9 @@ useSeoMeta({
   title: t('seo.articles.title'),
   description: t('seo.articles.description')
 })
+
+const { copy } = useClipboard()
+const toast = useAppToast()
 
 const UBadge = resolveComponent('UBadge') as DefineComponent<BadgeProps>
 const UButton = resolveComponent('UButton') as DefineComponent<ButtonProps>
@@ -22,8 +26,34 @@ const { createSortHeader, createFilterHeader, createInputFilterHeader } = useTab
   UInput
 )
 
-const loading = ref(false)
+const statusOptions = [
+  { value: 'public', label: t('table.articles.filters.status.public') },
+  { value: 'draft', label: t('table.articles.filters.status.draft') }
+]
 
+const localeOptions = [
+  { value: 'en', label: t('table.articles.filters.locale.en') },
+  { value: 'ja', label: t('table.articles.filters.locale.ja') },
+  { value: 'vn', label: t('table.articles.filters.locale.vn') }
+]
+const table = useTemplateRef('table')
+const loading = ref(false)
+const sorting = ref([
+  {
+    id: 'id',
+    desc: false
+  }
+])
+const columnFilters = ref([
+  {
+    id: 'title',
+    value: ''
+  }
+])
+const pagination = ref({
+  pageIndex: 0,
+  pageSize: 10
+})
 const data = ref<Article[]>([
   {
     id: '1',
@@ -75,17 +105,6 @@ const data = ref<Article[]>([
   }
 ])
 
-const statusOptions = [
-  { value: 'public', label: t('table.articles.filters.status.public') },
-  { value: 'draft', label: t('table.articles.filters.status.draft') }
-]
-
-const localeOptions = [
-  { value: 'en', label: t('table.articles.filters.locale.en') },
-  { value: 'ja', label: t('table.articles.filters.locale.ja') },
-  { value: 'vn', label: t('table.articles.filters.locale.vn') }
-]
-
 const columns: TableColumn<Article>[] = [
   {
     accessorKey: 'id',
@@ -136,29 +155,48 @@ const columns: TableColumn<Article>[] = [
       if (!filterValue || filterValue.length === 0) return true
       return filterValue.includes(row.getValue(columnId))
     }
+  },
+  {
+    id: 'action'
   }
 ]
 
-const table = useTemplateRef('table')
-
-const sorting = ref([
-  {
-    id: 'id',
-    desc: false
+const handleDeleteArticles = (id: string) => {
+  if (id) {
+    data.value = data.value.filter(a => a.id !== id)
+    toast.success(t('table.articles.actions.deleted'))
   }
-])
+}
 
-const columnFilters = ref([
-  {
-    id: 'title',
-    value: ''
-  }
-])
-
-const pagination = ref({
-  pageIndex: 0,
-  pageSize: 10
-})
+const getDropdownActions = (article: Article): DropdownMenuItem[][] => {
+  return [
+    [
+      {
+        label: t('table.articles.actions.copy_id'),
+        icon: 'i-lucide-copy',
+        onSelect: () => {
+          copy(article.id.toString())
+          toast.success('User ID copied to clipboard!')
+        }
+      }
+    ],
+    [
+      {
+        label: t('table.articles.actions.edit'),
+        icon: 'i-lucide-edit',
+        onSelect: () => navigateTo(`/articles/${article.id}`)
+      },
+      {
+        label: 'Delete',
+        icon: 'i-lucide-trash',
+        color: 'error',
+        onSelect: () => {
+          if (confirm(t('table.articles.actions.confirm_delete'))) handleDeleteArticles(article.id)
+        }
+      }
+    ]
+  ]
+}
 </script>
 
 <template>
@@ -180,10 +218,21 @@ const pagination = ref({
       :columns="columns"
       :loading="loading"
       :pagination-options="{
-        getPaginationRowModel: getPaginationRowModel(),
+        getPaginationRowModel: getPaginationRowModel()
       }"
       class="flex-1"
-    />
+    >
+      <template #action-cell="{ row }">
+        <UDropdownMenu :items="getDropdownActions(row.original)">
+          <UButton
+            icon="i-lucide-ellipsis-vertical"
+            color="neutral"
+            variant="ghost"
+            aria-label="Actions"
+          />
+        </UDropdownMenu>
+      </template>
+    </UTable>
   </div>
   <div class="flex justify-center pt-4">
     <UPagination

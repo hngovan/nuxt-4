@@ -91,6 +91,14 @@
           "ja": "Japanese",
           "vn": "Vietnamese"
         }
+      },
+      "actions": {
+        "copy_id": "Copy ID",
+        "copied": "ID copied!",
+        "edit": "Edit",
+        "delete": "Delete",
+        "confirm_delete": "Are you sure you want to delete this?",
+        "deleted": "Article deleted"
       }
     }
   }
